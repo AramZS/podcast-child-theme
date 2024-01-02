@@ -124,3 +124,17 @@ Text Domain:  podcastchild
 	margin-top: 0px;
 	padding-top: 0px;
 }
+
+#stable-container {
+	display: none;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	width: 33%;
+	padding: 10px;
+	background: var(--podcast-primary-accent-color);
+}
+
+#stable-container audio {
+	vertical-align: middle;
+}

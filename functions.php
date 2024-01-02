@@ -35,12 +35,17 @@ function htmx_scripts() {
     );
 	wp_enqueue_script(
         'htmx-head-support',
-        get_stylesheet_directory_uri() . '/js/head-support.min.js',
+        get_stylesheet_directory_uri() . '/js/head-support.js',
         array( 'htmx' )
     );
 	wp_enqueue_script(
         'xplayer',
         get_stylesheet_directory_uri() . '/js/xplayer.js',
+        array( 'htmx' )
+    );
+	wp_enqueue_script(
+        'xplayer-basic-native',
+        get_stylesheet_directory_uri() . '/js/xplayer-basic-native.js',
         array( 'htmx' )
     );
 }
