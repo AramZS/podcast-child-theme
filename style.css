@@ -34,13 +34,33 @@ Text Domain:  podcastchild
 }
 
 :root .theme-color-localswitchboard {
-	--podcast-background-color: #e9e2c2;
-	--podcast-special-background-color: #5f6a58;
-	--podcast-special2-background-color: #ca465a;
-	--podcast-link-color: #6f7b99;
-	--podcast-link-color-hover: #5f7cc4;
+	--forties-yellow: #e9e2c2;
+	--forties-green: #5f6a58;
+	--forties-red: #ca465a;
+	--forties-light-blue: #6f7b99;
+	--forties-blue: #5f7cc4;
+}
+
+:root .theme-color-localswitchboard {
+	--forties-yellow: rgba(233, 226, 194, 0.75);
+	--forties-green: rgba(95, 106, 88, 0.75);
+	--forties-red: rgba(202, 70, 90, 0.75);
+	--forties-light-blue: rgba(111, 123, 153, 0.75);
+	--forties-blue: rgba(95, 124, 196, 0.75);
+}
+
+:root .theme-color-localswitchboard {
+	--podcast-ff-primary: "Poppins", -apple-system, BlinkMacSystemFont, Arial,
+		sans-serif;
+	--podcast-ff-accent: "Poppins", -apple-system, BlinkMacSystemFont,
+		"Helvetica Neue", Helvetica, sans-serif;
+	--podcast-background-color: var(--forties-yellow);
+	--podcast-special-background-color: #fff;
+	--podcast-special2-background-color: var(--forties-red);
+	--podcast-link-color: #445b96;
+	--podcast-link-color-hover: var(--forties-blue);
 	--podcast-primary-accent-color: #6f7b99;
-	--podcast-primary-accent-complementary-color: #c8d2c6;
+	--podcast-primary-accent-complementary-color: var(--forties-yellow);
 	--podcast-neutral-color-100: #ffffff;
 	--podcast-neutral-color-900: #080808;
 	--podcast-intro-text-color: rgba(255, 255, 255, 0.749);
@@ -62,7 +82,7 @@ Text Domain:  podcastchild
 .theme-color-localswitchboard .page-intro-header,
 .theme-color-localswitchboard .page-intro-subscribe,
 .theme-color-localswitchboard #site-footer-credit {
-	color: var(--podcast-intro-text-color);
+	color: var(--podcast-neutral-color-900);
 }
 
 .theme-color-localswitchboard .ilovewp-featured-post .entry-tagline {
@@ -71,7 +91,7 @@ Text Domain:  podcastchild
 }
 
 .theme-color-localswitchboard #site-home-welcome a {
-	color: var(--podcast-intro-text-color);
+	color: var(--podcast-neutral-color-900);
 }
 
 #site-main
@@ -90,7 +110,7 @@ Text Domain:  podcastchild
 
 .theme-color-localswitchboard .page-intro-subscribe {
 	background-color: var(--podcast-special2-background-color);
-	color: var(--podcast-intro-text-color);
+	color: var(--podcast-neutral-color-900);
 	line-height: 1.7;
 	padding: 3rem 0;
 }

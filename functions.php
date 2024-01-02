@@ -199,3 +199,25 @@ function ilovewp_customizer_define_general_sections_child( $sections ) {
 }
 
 add_filter( 'ilovewp_customizer_sections', 'ilovewp_customizer_define_general_sections_child', 11 );
+
+add_filter( 'the_content', 'ex1_the_content_filter' );
+function ex1_the_content_filter($content) {
+    // finds all links in your content
+    preg_match_all('/(\<a href=.*?a>)/',$content,$matches, PREG_SET_ORDER);
+
+    // loop through all matches
+    foreach($matches as $m){
+        // potential link to be replaced...
+        $toReplace = $m[0];
+
+        // if current link does not already have target="{whatever}"
+        // You can add whatever additional "IF" you require to this one
+        if (!preg_match('/target\s*\=/',$toReplace)){
+            // adds target="_blank" to the current link
+            $replacement = preg_replace('/(\<a.*?)(\>)(.*?\/a\>.*?)/','$1 target="_blank"$2$3',$toReplace);
+            // replaces the current link with the $replacement string
+            $content = str_ireplace($toReplace,$replacement,$content);
+        }
+    }
+      return $content;
+}
