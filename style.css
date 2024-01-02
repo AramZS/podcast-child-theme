@@ -11,3 +11,86 @@ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
 Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
 Text Domain:  podcastchild
 */
+
+:root {
+	--podcast-ff-primary: "Poppins", -apple-system, BlinkMacSystemFont, Arial,
+		sans-serif;
+	--podcast-ff-accent: "Poppins", -apple-system, BlinkMacSystemFont,
+		"Helvetica Neue", Helvetica, sans-serif;
+	--podcast-background-color: #f7f7f7;
+	--podcast-special-background-color: #f2f0e4;
+	--podcast-special2-background-color: #f2f0e4;
+	--podcast-footer-background-color: #ffffff;
+	--podcast-primary-text-color: #181818;
+	--podcast-secondary-text-color: #484848;
+	--podcast-link-color: #058dd1;
+	--podcast-link-color-hover: #12bed9;
+	--podcast-primary-accent-color: #058dd1;
+	--podcast-primary-accent-complementary-color: #ffffff;
+	--podcast-neutral-color-100: #ffffff;
+	--podcast-neutral-color-900: #080808;
+	--podcast-border-color-100: rgba(255, 255, 255, 0.1);
+	--podcast-border-color-900: rgba(0, 0, 0, 0.1);
+}
+
+:root .theme-color-localswitchboard {
+	--podcast-background-color: #e9e2c2;
+	--podcast-special-background-color: #5f6a58;
+	--podcast-special2-background-color: #ca465a;
+	--podcast-link-color: #6f7b99;
+	--podcast-link-color-hover: #5f7cc4;
+	--podcast-primary-accent-color: #6f7b99;
+	--podcast-primary-accent-complementary-color: #c8d2c6;
+	--podcast-neutral-color-100: #ffffff;
+	--podcast-neutral-color-900: #080808;
+	--podcast-intro-text-color: rgba(255, 255, 255, 0.749);
+	--podcast-intro-text-color: #fff;
+}
+
+.theme-color-localswitchboard #site-mobile-menu .sub-menu-toggle,
+.theme-color-localswitchboard #site-mobile-menu-toggle .site-toggle-anchor,
+.theme-color-localswitchboard #site-mobile-menu a,
+.theme-color-localswitchboard #site-mobile-menu .current-menu-parent > a,
+.theme-color-localswitchboard #site-mobile-menu .current-menu-item > a {
+	color: var(--podcast-neutral-color-900);
+}
+
+.theme-color-localswitchboard #site-mobile-menu .menu li {
+	border-color: var(--podcast-border-color-900);
+}
+
+.theme-color-localswitchboard .page-intro-header,
+.theme-color-localswitchboard .page-intro-subscribe,
+.theme-color-localswitchboard #site-footer-credit {
+	color: var(--podcast-intro-text-color);
+}
+
+.theme-color-localswitchboard .ilovewp-featured-post .entry-tagline {
+	color: var(--podcast-neutral-color-100);
+	background-color: var(--podcast-neutral-color-900);
+}
+
+.theme-color-localswitchboard #site-home-welcome a {
+	color: var(--podcast-intro-text-color);
+}
+
+#site-main
+	.jetpack-podcast-player__header
+	img.jetpack-podcast-player__cover-image {
+	border: 0;
+	height: 80px;
+	max-width: 100%;
+	padding: 0;
+	width: 80px;
+}
+
+.wp-block-jetpack-podcast-player ol li {
+	list-style-type: none !important;
+}
+
+.theme-color-localswitchboard .page-intro-subscribe {
+	background-color: var(--podcast-special2-background-color);
+	color: var(--podcast-intro-text-color);
+	line-height: 1.7;
+	padding: 3rem 0;
+}
