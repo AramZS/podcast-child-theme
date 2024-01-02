@@ -114,3 +114,13 @@ Text Domain:  podcastchild
 	line-height: 1.7;
 	padding: 3rem 0;
 }
+
+.home .site-archive-post:first-of-type {
+	display: none;
+}
+
+.site-archive-posts .site-archive-post:nth-of-type(2) {
+	border-top: 0;
+	margin-top: 0px;
+	padding-top: 0px;
+}

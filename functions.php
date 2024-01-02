@@ -12,7 +12,7 @@ add_action( 'after_setup_theme', 'podcastchild_theme_setup' );
 
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 function my_theme_enqueue_styles() {
-	$parenthandle = 'parent-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
+	$parenthandle = 'podcast-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
 	$theme        = wp_get_theme();
 	wp_enqueue_style( $parenthandle,
 		get_template_directory_uri() . '/style.css',
@@ -25,6 +25,26 @@ function my_theme_enqueue_styles() {
 		$theme->get( 'Version' ) // This only works if you have Version defined in the style header.
 	);
 }
+
+add_action( 'wp_enqueue_scripts', 'htmx_scripts' );
+function htmx_scripts() {
+    wp_enqueue_script(
+        'htmx',
+        get_stylesheet_directory_uri() . '/js/htmx.min.js',
+        array( 'jquery' )
+    );
+	wp_enqueue_script(
+        'htmx-head-support',
+        get_stylesheet_directory_uri() . '/js/head-support.min.js',
+        array( 'htmx' )
+    );
+	wp_enqueue_script(
+        'xplayer',
+        get_stylesheet_directory_uri() . '/js/xplayer.js',
+        array( 'htmx' )
+    );
+}
+
 
 // Get Color Palette from Theme Options
 if( ! function_exists( 'ilovewp_helper_get_color_palette' ) ) {
@@ -198,16 +218,45 @@ function ilovewp_customizer_define_general_sections_child( $sections ) {
     return array_merge( $sections, $general_sections );
 }
 
+function get_htmx_link_props(){
+	return ' hx-boost="true" hx-swap="outerHTML show:top" hx-target="#container" hx-push-url="true" hx-select="#container" ';
+}
+
+function the_htmx_link_props(){
+	echo get_htmx_link_props();
+}
+
 function alter_link_to_htmx($toReplace, $content){
 	$baseUrl = parse_url(home_url(), PHP_URL_HOST);
 	//$urlParts = explode('.', $baseUrl);
 
-	if (preg_match('/'.preg_quote($baseUrl).'/',$toReplace)){
-		$replacement = preg_replace('/(\<a.*?)(\>)(.*?\/a\>.*?)/','$1 rel="internal"$2$3',$toReplace);
+	if (!preg_match('/hx-target\s*\=/',$toReplace) && preg_match('/'.preg_quote($baseUrl).'/',$toReplace)){
+		$replacement = preg_replace('/(\<a.*?)(\>)(.*?\/a\>.*?)/','$1  hx-boost="true" hx-swap="outerHTML show:top" hx-target="#container" hx-push-url="true" hx-select="#container"$2$3',$toReplace);
 		// replaces the current link with the $replacement string
 		$content = str_ireplace($toReplace,$replacement,$content);
 	}
 	return $content;
+}
+
+function htmx_ify_content($html){
+	preg_match_all('/(\<a.*href=.*?a>)/',$html,$matches, PREG_SET_ORDER);
+	//	print_r('<pre><code>');
+	//	print_r($matches);
+	//	print_r('</pre></code>');
+		// loop through all matches
+		foreach($matches as $m){
+			// potential link to be replaced...
+			$toReplace = $m[0];
+			// Why is the link there twice in each array?
+			$html = alter_link_to_htmx($toReplace, $html);
+			//$toReplace = $m[1];
+			//alter_link_to_htmx($toReplace, $html);
+	
+		}
+	//	print_r('<pre><code>');
+	//	print_r($html);
+	//	print_r('</code></pre>');
+		return $html;
 }
 
 add_filter( 'ilovewp_customizer_sections', 'ilovewp_customizer_define_general_sections_child', 11 );
