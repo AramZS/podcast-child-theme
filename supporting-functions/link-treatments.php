@@ -3,6 +3,9 @@
 // Page/Post Title
 
 function ilovewp_helper_display_breadcrumbs() {
+	ob_start();
+
+
 
 	// CONDITIONAL FOR "Breadcrumb NavXT" plugin OR Yoast SEO Breadcrumbs
 	// https://wordpress.org/plugins/breadcrumb-navxt/
@@ -17,6 +20,9 @@ function ilovewp_helper_display_breadcrumbs() {
 	if ( function_exists('yoast_breadcrumb') ) {
 		yoast_breadcrumb('<div class="site-breadcrumbs"><p class="site-breadcrumbs-p">','</p></div>');
 	}
+	$breadcrumbs = ob_get_clean();
+	$fixed_content = htmx_ify_content($breadcrumbs);
+	echo $fixed_content;
 
 }
 
