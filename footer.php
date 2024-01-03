@@ -36,7 +36,7 @@
 	</div><!-- .site-wrapper-all .site-wrapper-boxed -->
 
 </div><!-- #container -->
-<aside id="stable-container" hx-preserve><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/jAHRbFetqII?si=Iybpd1AyUon9OV0k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></aside>
+<aside id="stable-container" hx-preserve></aside>
 <?php 
 wp_footer(); 
 ?>

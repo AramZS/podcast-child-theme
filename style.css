@@ -141,7 +141,6 @@ Text Domain:  podcastchild
 
 @media only screen and (max-width: 768px) {
 	#stable-container {
-		display: block;
 		width: 50%;
 		bottom: 40px;
 		min-width: fit-content;
